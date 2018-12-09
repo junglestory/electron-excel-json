@@ -2,10 +2,10 @@
   "name": "electron-excel-json",
   "version": "1.0.0",
   "description": "Excel to json with electron",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "postinstall": "install-app-deps",
-    "start": "electron ./app --enable-logging",
+    "start": "electron ./ --enable-logging",
     "clean": "rm -rf ./dist",
     "dev": "NODE_ENV='development' npm run start",
     "dist": "npm run clean && build -m",
@@ -20,11 +20,11 @@
   },
   "build": {
     "appId": "app.excel.json.electron",
-    "productName": "Excel to Json Electron App",
+    "productName": "electron-excel-json",
     "publish": {
       "provider": "github",
       "owner": "junglestory",
-      "repo": "excel-json-electron-app"
+      "repo": "electron-excel-json"
     },
     "mac": {
       "category": "junglestory.app.category.type"
@@ -38,6 +38,7 @@
     }
   },
   "dependencies": {
+    "convert-excel-to-json": "^1.6.0",
     "electron-updater": "^4.0.5"
   }
 }
