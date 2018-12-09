@@ -1,6 +1,29 @@
 <html>
-  <head></head>
+  <head>
+  	<script>
+  		const excelToJson = require('convert-excel-to-json');
+		const {dialog} = require("electron").remote;
+
+		function parser() {			
+			dialog.showOpenDialog({filters: [{ name: 'Excel', extensions: ['xls', 'xlsx'] }], properties: ['openFile', 'openDirectory'] }, 
+				function (fileNames) {		
+					const result = excelToJson({
+				    	sourceFile: fileNames[0]
+					});
+
+					document.getElementById('result').innerHTML = JSON.stringify(result);
+			});
+		}
+  	</script>
+  </head>
   <body>
     <h1>Hello Electron</h1>
+    <form id = "uploadForm" >
+		<input type="file" name="file" />Upload
+		<input type="button" value="Upload" onclick="parser()">
+	</form>
+
+	<div>Results</div>
+	<div id="result"></div>
   </body>
 </html>
