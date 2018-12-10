@@ -9,7 +9,9 @@
     "clean": "rm -rf ./dist",
     "dev": "NODE_ENV='development' npm run start",
     "dist": "npm run clean && build -m",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package-mac": "electron-packager ./ electron-excel-json --overwrite --asar --platform=darwin --arch x64 --out dist --prune",
+    "create-installer-mac": "electron-installer-dmg ./dist/electron-excel-json-darwin-x64/electron-excel-json.app electron-excel-json --out=./dist --overwrite"
   },
   "keywords": [],
   "author": "",
