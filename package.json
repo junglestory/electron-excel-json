@@ -1,6 +1,6 @@
 {
   "name": "electron-excel-json",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Excel to json with electron",
   "main": "main.js",
   "scripts": {
@@ -10,15 +10,22 @@
     "dev": "NODE_ENV='development' npm run start",
     "dist": "npm run clean && build -m",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "gh-publish": "electron-builder --x64 --mac -p always",
+    "pack": "electron-builder --dir",
+    "dist-mac": "electron-builder --x64 --mac --win",
     "package-mac": "electron-packager ./ electron-excel-json --overwrite --asar --platform=darwin --arch x64 --out dist --prune",
     "create-installer-mac": "electron-installer-dmg ./dist/electron-excel-json-darwin-x64/electron-excel-json.app electron-excel-json --out=./dist --overwrite"
   },
   "keywords": [],
-  "author": "",
+  "author": "junglestory",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^1.4.15",
-    "electron-builder": "^12.0.3"
+    "electron": "^4.0.1",
+    "electron-builder": "^20.28.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/junglestory/electron-excel-json"
   },
   "build": {
     "appId": "app.excel.json.electron",
@@ -29,18 +36,16 @@
       "repo": "electron-excel-json"
     },
     "mac": {
-      "category": "junglestory.app.category.type"
-    },
-    "win": {
-      "iconUrl": "(windows-only) https link to icon",
-      "publish": [
-        "github"
-      ],
-      "remoteReleases": "https://github.com/junglestory/electron-excel-json"
+      "category": "junglestory.app.category.type",
+      "target": [
+        "zip",
+        "dmg"
+      ]
     }
   },
   "dependencies": {
     "convert-excel-to-json": "^1.6.0",
+    "electron-log": "^2.2.17",
     "electron-updater": "^4.0.5"
   }
 }
